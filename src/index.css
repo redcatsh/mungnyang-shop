@@ -73,6 +73,10 @@
   box-sizing: border-box;
 }
 
+/* #root {
+  @apply w-full max-w-screen-2xl;
+} */
+
 html,
 body,
 div,
@@ -181,7 +185,9 @@ body {
   flex-direction: column;
   justify-content: center;
   font-family: "SCDream";
+  /* @apply flex flex-col items-center; */
 }
+
 ol,
 ul {
   list-style: none;
