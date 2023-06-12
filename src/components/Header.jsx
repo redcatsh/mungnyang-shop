@@ -1,11 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { MdOutlinePets } from "react-icons/md";
 import { BsPencil } from "react-icons/bs";
 import { BiShoppingBag } from "react-icons/bi";
 import { Link } from "react-router-dom";
-import { login } from "../api/firebase";
+import { login, logout, onUserStateChange } from "../api/firebase";
 
 export default function Header() {
+  const [user, setUser] = useState();
+
+  // 이전에 로그인한 세션 저장
+  useEffect(() => {
+    onUserStateChange((user) => {
+      console.log(user);
+      setUser(user);
+    });
+  }, []);
+
+  const handleLogin = () => {
+    login().then(setUser);
+  };
+  const handleLogout = () => {
+    logout().then(setUser);
+  };
   return (
     <header className="flex justify-between py-4 px-6 items-center">
       <Link to="/" className="flex items-center justify-center">
@@ -24,7 +40,8 @@ export default function Header() {
             <Link to="products/new">
               <BsPencil />
             </Link>
-            <button onClick={login}>Login</button>
+            {!user && <button onClick={handleLogin}>Login</button>}
+            {user && <button onClick={handleLogout}>Logout</button>}
           </ul>
         </nav>
       </div>
