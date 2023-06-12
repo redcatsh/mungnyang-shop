@@ -20,19 +20,13 @@ const auth = getAuth();
 const provider = new GoogleAuthProvider();
 
 // 로그인
-export async function login() {
-  return signInWithPopup(auth, provider)
-    .then((result) => {
-      const user = result.user;
-      console.log(user);
-      return user;
-    })
-    .catch(console.error);
+export function login() {
+  signInWithPopup(auth, provider).catch(console.error);
 }
 
 // 로그아웃
-export async function logout() {
-  return signOut(auth).then(() => null);
+export function logout() {
+  signOut(auth).catch(console.error);
 }
 
 export function onUserStateChange(callback) {
