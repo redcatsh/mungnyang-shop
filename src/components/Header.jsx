@@ -3,6 +3,7 @@ import { MdOutlinePets } from "react-icons/md";
 import { BsPencil } from "react-icons/bs";
 import { BiShoppingBag } from "react-icons/bi";
 import { Link } from "react-router-dom";
+import { login } from "../api/firebase";
 
 export default function Header() {
   return (
@@ -23,7 +24,7 @@ export default function Header() {
             <Link to="products/new">
               <BsPencil />
             </Link>
-            <li>Login</li>
+            <button onClick={login}>Login</button>
           </ul>
         </nav>
       </div>
