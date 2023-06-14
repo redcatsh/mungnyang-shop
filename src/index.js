@@ -10,6 +10,7 @@ import AllProducts from "./pages/AllProducts";
 import NewProduct from "./pages/NewProduct";
 import MyCart from "./pages/MyCart";
 import ProductDetail from "./pages/ProductDetail";
+import ProtectedRoute from "./pages/ProtectedRoute";
 
 const router = createBrowserRouter([
   {
@@ -19,9 +20,26 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: "/products", element: <AllProducts /> },
-      { path: "/products/new", element: <NewProduct /> },
+      {
+        path: "/products/new",
+
+        element: (
+          <ProtectedRoute requireAdmin>
+            <NewProduct />
+          </ProtectedRoute>
+          // 원래 requireAdmin={true} 인데 true는 생략가능함!
+          // 여기서 requireAdmin은 "이 라우터는 어드민 사용자만 접근할 수 있는 라우터야" 라고 명시하는 용도!
+        ),
+      }, //ProtectedRoute로 권한분기!
       { path: "/products/:id", element: <ProductDetail /> },
-      { path: "/cart", element: <MyCart /> },
+      {
+        path: "/cart",
+        element: (
+          <ProtectedRoute>
+            <MyCart />
+          </ProtectedRoute>
+        ),
+      },
     ],
   },
 ]);
@@ -33,7 +51,4 @@ root.render(
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();

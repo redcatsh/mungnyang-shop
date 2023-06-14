@@ -6,21 +6,10 @@ import { Link } from "react-router-dom";
 import { login, logout, onUserStateChange } from "../api/firebase";
 import User from "./User";
 import Button from "./ui/Button";
+import { useAuthContext } from "./context/AuthContext";
 
 export default function Header() {
-  const [user, setUser] = useState();
-
-  // 이전에 로그인한 세션 저장
-  useEffect(() => {
-    // onUserStateChange((user) => {
-    //   setUser(user);
-    // });
-
-    onUserStateChange((user) => {
-      console.log(user);
-      setUser(user);
-    }); // 인자값이 같으면 참조값만 전달해도 됨!
-  }, []);
+  const { user, login, logout } = useAuthContext();
 
   return (
     <header className="flex justify-between py-4 px-6 items-center">
