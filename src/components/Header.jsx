@@ -15,7 +15,10 @@ export default function Header() {
     //   setUser(user);
     // });
 
-    onUserStateChange(setUser); // 인자값이 같으면 참조값만 전달해도 됨!
+    onUserStateChange((user) => {
+      console.log(user);
+      setUser(user);
+    }); // 인자값이 같으면 참조값만 전달해도 됨!
   }, []);
 
   return (
@@ -28,17 +31,31 @@ export default function Header() {
       </Link>
       <div>
         <nav>
-          <ul className="flex gap-7 font-['Poppins'] uppercase font-light items-center">
-            <Link to="/products">Products</Link>
-            <Link to="/cart">
-              <BiShoppingBag />
+          <ul className="flex gap-7 font-['Poppins'] font-light items-center">
+            <Link to="/products" className="uppercase">
+              Products
             </Link>
+            {user ? (
+              <Link to="/cart">
+                <BiShoppingBag />
+              </Link>
+            ) : (
+              ""
+            )}
             <Link to="products/new">
               <BsPencil />
             </Link>
             {user && <User user={user} />}
-            {!user && <button onClick={login}>Login</button>}
-            {user && <button onClick={logout}>Logout</button>}
+            {!user && (
+              <button onClick={login} className="uppercase">
+                Login
+              </button>
+            )}
+            {user && (
+              <button onClick={logout} className="uppercase">
+                Logout
+              </button>
+            )}
           </ul>
         </nav>
       </div>
