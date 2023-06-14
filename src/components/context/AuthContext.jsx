@@ -2,10 +2,11 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { login, logout, onUserStateChange } from "../../api/firebase";
 
 const AuthContext = createContext();
-const LOADING_STATE = "loading";
+// const LOADING_STATE = "loading";
 
 export function AuthContextProvider({ children }) {
-  const [user, setUser] = useState(LOADING_STATE);
+  const [user, setUser] = useState();
+  //   const [user, setUser] = useState(LOADING_STATE)  // Loading 처리할 떄
   // 이전에 로그인한 세션 저장
   useEffect(() => {
     // onUserStateChange((user) => {
@@ -24,7 +25,7 @@ export function AuthContextProvider({ children }) {
         user,
         login: login,
         logout: logout,
-        loading: user === LOADING_STATE,
+        // loading: user === LOADING_STATE,     // 로딩처리 할 때
       }}
     >
       {children}

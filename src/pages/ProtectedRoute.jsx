@@ -5,12 +5,15 @@ import { useAuthContext } from "../components/context/AuthContext";
 export default function ProtectedRoute({ children, requireAdmin }) {
   const { user, loading } = useAuthContext();
 
-  if (loading) {
-    return (
-      <div className="flex justify-center mt-32">
-        <p className="text-3xl">Loading...</p>
-      </div>
-    );
+  //   if (loading) {
+  //     return (
+  //       <div className="flex justify-center mt-32">
+  //         <p className="text-3xl">Loading...</p>
+  //       </div>
+  //     );
+  //   }
+  if (user === undefined) {
+    return <></>;
   }
   if (!user || (requireAdmin && !user.isAdmin)) {
     // 사용자가 없거나, requireAdmin인데 user의 isAdmin이 false 라면..
