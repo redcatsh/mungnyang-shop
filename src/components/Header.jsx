@@ -5,6 +5,7 @@ import { BiShoppingBag } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { login, logout, onUserStateChange } from "../api/firebase";
 import User from "./User";
+import Button from "./ui/Button";
 
 export default function Header() {
   const [user, setUser] = useState();
@@ -23,7 +24,7 @@ export default function Header() {
 
   return (
     <header className="flex justify-between py-4 px-6 items-center">
-      <Link to="/" className="flex items-center justify-center">
+      <Link to="/" className="flex items-center justify-center text-brand">
         <div>
           <MdOutlinePets className="text-2xl mr-1" />
         </div>
@@ -42,20 +43,17 @@ export default function Header() {
             ) : (
               ""
             )}
-            <Link to="products/new">
-              <BsPencil />
-            </Link>
+            {user && user.isAdmin ? (
+              <Link to="products/new">
+                <BsPencil />
+              </Link>
+            ) : (
+              ""
+            )}
+
             {user && <User user={user} />}
-            {!user && (
-              <button onClick={login} className="uppercase">
-                Login
-              </button>
-            )}
-            {user && (
-              <button onClick={logout} className="uppercase">
-                Logout
-              </button>
-            )}
+            {!user && <Button onClick={login} text={"Login"} />}
+            {user && <Button onClick={logout} text={"Logout"} />}
           </ul>
         </nav>
       </div>
