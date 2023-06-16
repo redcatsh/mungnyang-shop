@@ -185,6 +185,7 @@ body {
   flex-direction: column;
   justify-content: center;
   font-family: "SCDream";
+  position: relative;
   /* @apply flex flex-col items-center; */
 }
 
@@ -208,11 +209,6 @@ table {
   border-spacing: 0;
 }
 
-button {
-  border: 0 none;
-  background-color: transparent;
-}
-
 textarea,
 button {
   -webkit-appearance: none;
@@ -220,5 +216,5 @@ button {
 }
 
 input {
-  outline: none;
+  @apply p-4 outline-none border border-gray-300 my-1;
 }

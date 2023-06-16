@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { MdOutlinePets } from "react-icons/md";
 import { BsPencil } from "react-icons/bs";
 import { BiShoppingBag } from "react-icons/bi";
 import { Link } from "react-router-dom";
-import { login, logout, onUserStateChange } from "../api/firebase";
 import User from "./User";
 import Button from "./ui/Button";
 import { useAuthContext } from "./context/AuthContext";

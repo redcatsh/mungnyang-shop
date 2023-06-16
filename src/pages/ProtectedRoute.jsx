@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom";
 import { useAuthContext } from "../components/context/AuthContext";
 
 export default function ProtectedRoute({ children, requireAdmin }) {
-  const { user, loading } = useAuthContext();
+  const { user } = useAuthContext();
 
   //   if (loading) {
   //     return (
