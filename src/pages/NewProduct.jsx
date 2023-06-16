@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { addNewProduct } from "../api/firebase";
 import { uploadImage } from "../api/uploader";
 import Button from "../components/ui/Button";
 
@@ -10,18 +11,21 @@ export default function NewProduct() {
     const { name, value, files } = e.target;
     if (name === "file") {
       setFile(files && files[0]);
-      console.log(files);
+      // console.log(files);
       return; // return 해주면 아래 setProduct가 실행되지 않음!
     }
     setProduct((product) => ({ ...product, [name]: value })); // key값이 동적으로 할당될때는 [key]:value 형식으로 써주어야 함
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // 제품의 사진을 Cloudinary에 업로드 하고 URL을 획득
     uploadImage(file).then((url) => {
       console.log(url);
+      // Firebase에 새로운 제품을 추가함
+      addNewProduct(product, url);
     });
-    // 제품의 사진을 Cloudinary에 업로드 하고 URL을 획득
-    // Firebase에 새로운 제품을 추가함
   };
   return (
     <section>

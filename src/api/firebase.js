@@ -1,5 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+import { v4 as uuid } from "uuid";
 import {
   getAuth,
   signInWithPopup,
@@ -7,7 +8,7 @@ import {
   signOut,
   onAuthStateChanged,
 } from "firebase/auth";
-import { getDatabase, ref, child, get, set } from "firebase/database";
+import { getDatabase, ref, get, set } from "firebase/database";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -39,6 +40,7 @@ export function onUserStateChange(callback) {
   });
 }
 
+// admin인지 아닌지 판단!
 async function adminUser(user) {
   // 2. 사용자가 어드민 권한을 가지고 있는지 확인!
   // 3. {...user, isAdmin: true/false}
@@ -51,4 +53,16 @@ async function adminUser(user) {
       }
       return user;
     });
+}
+
+// 상품등록
+export async function addNewProduct(product, imageUrl) {
+  const id = uuid();
+  set(ref(database, `products/${id}`), {
+    ...product,
+    id,
+    price: parseInt(product.price),
+    image: imageUrl,
+    option: product.option.split(","),
+  });
 }
