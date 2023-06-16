@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { uploadImage } from "../api/uploader";
 import Button from "../components/ui/Button";
 
 export default function NewProduct() {
@@ -7,7 +8,6 @@ export default function NewProduct() {
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
-    console.log(e.target);
     if (name === "file") {
       setFile(files && files[0]);
       console.log(files);
@@ -17,11 +17,15 @@ export default function NewProduct() {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    uploadImage(file).then((url) => {
+      console.log(url);
+    });
     // 제품의 사진을 Cloudinary에 업로드 하고 URL을 획득
     // Firebase에 새로운 제품을 추가함
   };
   return (
     <section>
+      {/* 아래 코드는 preview 이미지를 띄울 수 있는 URL 메소드! */}
       {file && <img src={URL.createObjectURL(file)} alt="local file" />}
       <form onSubmit={handleSubmit}>
         <input
