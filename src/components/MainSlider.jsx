@@ -14,7 +14,7 @@ export default function MainSlider() {
         //   spaceBetween={50}
         slidesPerView={1}
         loop={true}
-        //   autoplay={{ delay: 2500, disableOnInteraction: false }}
+        // autoplay={{ delay: 2500, disableOnInteraction: false }}
         navigation
         pagination={{ clickable: true }}
         //   scrollbar={{ draggable: true }}
@@ -22,7 +22,7 @@ export default function MainSlider() {
         onSlideChange={() => console.log("slide change")}
         className="relative h-screen"
       >
-        <div className="scroll absolute bottom-16 font-['Raleway'] left-[30%]">
+        <div className="scroll absolute bottom-14 font-['Raleway'] left-[30%] z-30">
           <div className="flex items-center justify-center rotate-[-90deg]">
             <span></span>
             <em>Scroll Down</em>
