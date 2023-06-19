@@ -66,3 +66,24 @@ export async function addNewProduct(product, imageUrl) {
     option: product.option.split(","),
   });
 }
+
+// 상품 보여주기
+export async function getProducts() {
+  return get(ref(database, "products")).then((snapshot) => {
+    if (snapshot.exists()) {
+      const productData = snapshot.val();
+      console.log(productData);
+      const newProductArray = [];
+      for (let key in productData) {
+        const newProductObj = {
+          id: key,
+          ...productData[key],
+        };
+        newProductArray.push(newProductObj);
+      }
+
+      console.log(newProductArray);
+      return newProductArray;
+    }
+  });
+}
