@@ -1,0 +1,95 @@
+.swiper {
+  position: relative;
+}
+.slideContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding-top: 72px;
+  padding-right: 100px;
+  height: 100%;
+}
+
+.imageBox {
+  width: 1040px;
+}
+.imageBox img {
+  height: 100%;
+  object-fit: cover;
+}
+
+.slideTxt {
+  position: absolute;
+  left: 7%;
+  top: 41%;
+}
+
+.slideTxt h1 {
+  font-size: 88px;
+  font-family: "Raleway";
+  font-weight: 800;
+  color: #60a2da;
+  line-height: 1.2;
+  mix-blend-mode: screen;
+}
+
+.slt2 h1 {
+  color: #c88e65;
+}
+
+.slt3 h1 {
+  color: #d5ad46;
+}
+
+.slt4 h1 {
+  color: #f6a607;
+}
+
+.slideTxt button {
+  background-color: #60a2da;
+  color: #f2f2f2;
+  padding: 20px 40px;
+  font-size: 18px;
+  font-family: "Raleway";
+  margin-top: 50px;
+}
+
+.slt2 button {
+  background-color: #c88e65;
+}
+
+.slt3 button {
+  background-color: #d5ad46;
+}
+
+.slt4 button {
+  background-color: #f6a607;
+}
+
+.slideTxt p {
+  font-family: "Raleway";
+  text-transform: uppercase;
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  color: #222;
+}
+
+.slideTxt p span {
+  font-weight: 200;
+  letter-spacing: 3px;
+  margin-left: 15px;
+}
+
+.scroll span {
+  background: #000;
+  display: block;
+  height: 2px;
+  margin-right: 20px;
+  width: 20px;
+}
+
+.scroll em {
+  font-size: 14px;
+  font-weight: 400;
+}

@@ -11,16 +11,16 @@ export default function Header() {
   const { user, login, logout } = useAuthContext();
 
   return (
-    <header className="flex justify-between py-4 px-6 items-center">
-      <Link to="/" className="flex items-center justify-center text-brand">
+    <header className="flex justify-between py-4 px-6 items-center fixed top-0 w-full z-50 bg-white">
+      <Link to="/" className="flex items-center justify-center text-black">
         <div>
           <MdOutlinePets className="text-2xl mr-1" />
         </div>
-        <div className="font-['Cherry_Bomb_One'] text-2xl">MungNyang</div>
+        <div className="font-['Raleway'] text-2xl font-light">MungNyang</div>
       </Link>
       <div>
         <nav>
-          <ul className="flex gap-7 font-['Poppins'] font-light items-center">
+          <ul className="flex gap-7 font-['Raleway'] font-light items-center">
             <Link to="/products" className="uppercase">
               Products
             </Link>
