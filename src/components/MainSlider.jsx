@@ -1,7 +1,7 @@
 import React from "react";
 import { Navigation, Pagination, Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css/bundle";
+import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "../styles/MainSlider.css";
@@ -16,11 +16,12 @@ export default function MainSlider() {
         loop={true}
         // autoplay={{ delay: 2500, disableOnInteraction: false }}
         navigation
+        speed={1500}
         pagination={{ clickable: true }}
         //   scrollbar={{ draggable: true }}
         onSwiper={(swiper) => console.log(swiper)}
         onSlideChange={() => console.log("slide change")}
-        className="relative h-screen"
+        className="mySwiper relative h-screen"
       >
         <div className="scroll absolute bottom-14 font-['Raleway'] left-[30%] z-30">
           <div className="flex items-center justify-center rotate-[-90deg]">

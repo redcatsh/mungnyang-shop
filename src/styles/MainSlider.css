@@ -1,6 +1,7 @@
-.swiper {
+.mySwiper {
   position: relative;
 }
+
 .slideContainer {
   display: flex;
   flex-direction: row;
@@ -22,10 +23,6 @@
   position: absolute;
   left: 7%;
   top: 41%;
-  /* transform: translateX(100px);
-  transition: all 1.6s ease-in-out;
-  transition-delay: 0.4s;
-  opacity: 0; */
 }
 
 .slideTxt h1 {
@@ -35,6 +32,10 @@
   color: #60a2da;
   line-height: 1.2;
   mix-blend-mode: screen;
+  transform: translateX(50px);
+  transition: all 1.6s ease-in-out;
+  transition-delay: 0.4s;
+  opacity: 0;
 }
 
 .slt2 h1 {
@@ -112,6 +113,16 @@
   }
 }
 
+@keyframes fadeRight {
+  0% {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
 .scroll {
   animation: scroll 1s ease-in-out infinite alternate;
 }
@@ -146,7 +157,8 @@ span.swiper-pagination-bullet {
   background-color: #ffb100;
 }
 
-/* .swiper-slide.swiper-slide-active .slideTxt {
+.swiper-slide.swiper-slide-active .slideTxt h1 {
   transform: translateX(0);
   opacity: 1;
-} */
+  animation: fadeRight 1.6s ease-in-out;
+}
