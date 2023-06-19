@@ -1,5 +1,10 @@
 import React from "react";
+import MainSlider from "../components/MainSlider";
 
 export default function Home() {
-  return <div></div>;
+  return (
+    <>
+      <MainSlider />
+    </>
+  );
 }
