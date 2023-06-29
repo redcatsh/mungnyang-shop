@@ -13,14 +13,12 @@ export default function Products() {
     <>
       {isLoading && <p>Loading...</p>}
       {error && <p>error</p>}
-      <ul>
-        <p>
-          {products &&
-            products.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-        </p>
-      </ul>
+      <div className="pt-9 pr-9 pl-9 grid grid-cols-[repeat(auto-fill,minmax(320px,_1fr))] gap-6">
+        {products &&
+          products.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+      </div>
     </>
   );
 }

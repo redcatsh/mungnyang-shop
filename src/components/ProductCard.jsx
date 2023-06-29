@@ -4,10 +4,10 @@ export default function ProductCard({
   product: { id, image, title, category, price },
 }) {
   return (
-    <li>
+    <div>
       <img src={image} alt={title} />
       <h3>{title}</h3>
       <p>{price}</p>
-    </li>
+    </div>
   );
 }
