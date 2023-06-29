@@ -3,13 +3,16 @@ import { PriceReg } from "../commons/util";
 import { useNavigate } from "react-router-dom";
 import "../styles/Card.css";
 
-export default function ProductCard({ product: { id, image, title, price } }) {
+export default function ProductCard({
+  product,
+  product: { id, image, title, price },
+}) {
   const navigate = useNavigate();
   return (
     <li
       className="card cursor-pointer overflow-hidden"
       onClick={() => {
-        navigate(`/products/${id}`);
+        navigate(`/products/${id}`, { state: { product } });
       }}
     >
       <div className="overflow-hidden">
