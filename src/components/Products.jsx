@@ -13,7 +13,7 @@ export default function Products() {
     <>
       {isLoading && <p>Loading...</p>}
       {error && <p>error</p>}
-      <div className="pt-9 pr-9 pl-9 grid grid-cols-[repeat(auto-fill,minmax(320px,_1fr))] gap-6">
+      <div className="pt-[72px] pr-9 pl-9 grid grid-cols-[repeat(auto-fill,minmax(320px,_1fr))] gap-6 pb-10">
         {products &&
           products.map((product) => (
             <ProductCard key={product.id} product={product} />

@@ -3,7 +3,6 @@ import { addNewProduct } from "../api/firebase";
 import { uploadImage } from "../api/uploader";
 import Button from "../components/ui/Button";
 import { Modal } from "antd";
-import "../styles/NewProduct.css";
 
 export default function NewProduct() {
   const [product, setProduct] = useState({});
@@ -47,7 +46,7 @@ export default function NewProduct() {
       .finally(() => setIsUploading(false));
   };
   return (
-    <section className="wrapper w-full text-center">
+    <section className="wrapper w-full text-center h-auto pb-10">
       <h2 className="text-2xl font-bold my-4">새로운 제품 등록</h2>
       {/* {success && <p>✅ {success}</p>} */}
 

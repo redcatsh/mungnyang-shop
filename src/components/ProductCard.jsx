@@ -1,4 +1,5 @@
 import React from "react";
+import { PriceReg } from "../commons/util";
 
 export default function ProductCard({
   product: { id, image, title, category, price },
@@ -6,8 +7,8 @@ export default function ProductCard({
   return (
     <div>
       <img src={image} alt={title} />
-      <h3>{title}</h3>
-      <p>{price}</p>
+      <h3 className="mt-4">{title}</h3>
+      <p className="mt-2">₩{PriceReg(price)}</p>
     </div>
   );
 }
